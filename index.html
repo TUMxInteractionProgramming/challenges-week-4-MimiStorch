@@ -14,10 +14,16 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <!-- #6 #external #action-->
+    <script src="js/channels.js"></script>
     <script src="js/script.js"></script>
+    
+    
+    <!-- embed fonts are awsome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    
 </head>
-<body>
-
+<body onload="listChannels()">
+    
 <!-- channel area -->
 <div id="channels">
 
@@ -29,56 +35,8 @@
 
     <!-- CHANNELS -->
     <ul>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#Yummy')">
-            #Yummy
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
-        </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li class="selected" onclick="switchChannel('#SevenContinents')">
-            #SevenContinents
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
-        </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#KillerApp')">
-            #KillerApp
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
-        </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#FirstPersonOnMars')">
-            #FirstPersonOnMars
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
-        </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#Octoberfest')">
-            #Octoberfest
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
-        </li>
+        
+       
 
     </ul>
 
@@ -87,13 +45,13 @@
         <!-- #6 #taptab buttons are getting ids with #hyphens and a #change listener calling selectTab.
              Pass the #argument to select Tab -->
         <button class="selected" id="tab-new" onclick="selectTab('#tab-new')">
-            <img src="http://ip.lfe.mw.tum.de/sections/lightbulb-o.png" alt="Bulb"> New
+            <i class="far fa-lightbulb" alt="Bulb"></i> New
         </button>
         <button id="tab-trending" onclick="selectTab('#tab-trending')">
-            <img src="http://ip.lfe.mw.tum.de/sections/fire.png" alt="Hot"> Trending
+            <i class="fa fa-fire" alt="Hot"></i> Trending
         </button>
         <button id="tab-favorites" onclick="selectTab('#tab-favorites')">
-            <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="Star"> Favorites
+            <i class="fas fa-star" alt="star"></i> Favorites
         </button>
     </div>
 </div>
@@ -107,7 +65,7 @@
         <!-- #6 #channels #location also needs an id -->
         <small id="channel-location">by <strong>cheeses.yard.applies</strong></small>
         <!-- #6 #liking channels requires a #filled star / with its #click listener -->
-        <img id="channel-star" src="http://ip.lfe.mw.tum.de/sections/star.png" alt="Favourite" onclick="star()">
+            <i id="channel-star" class="fas fa-star" alt="Favourite" onclick="star()"></i>
     </h1>
 
     <!-- #5 #messages are now wrapped in a div to #scroll properly */ -->
@@ -162,8 +120,10 @@
 
     <!-- #5 #smileys #insert the chat-bar -->
     <div id="chat-bar"> <!-- #6 #smile #show the menu on click -->
-        <button id="emojis-button" onclick="toggleEmojis()"><img src="http://ip.lfe.mw.tum.de/sections/smile-o.png" alt="Smiley"></button>
+        <button id="emojis-button" onclick="toggleEmojis()"><i class="far fa-smile"></i></button>
+        <input type="text" placeholder="Massage..." maxlength="140" id="message">
         <div id="emojis">&#x1F601; &#x1F602; &#x1F603; &#x1F604; &#x1F605; &#x1F606; &#x1F607;</div>
+        <button onclick="sendMessage()"><i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 
